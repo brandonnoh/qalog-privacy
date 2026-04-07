@@ -5,64 +5,192 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QAlog — Privacy Policy</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #1e293b; }
-    h1 { font-size: 1.6rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; }
-    h2 { font-size: 1.2rem; margin-top: 2rem; color: #334155; }
-    ul { padding-left: 1.5rem; }
-    li { margin-bottom: 0.4rem; }
-    .date { color: #64748b; font-size: 0.9rem; }
-    a { color: #2563eb; }
+    :root { --text: #1e293b; --text-sub: #475569; --border: #e2e8f0; --accent: #4A8FFF; --bg: #fff; --bg-alt: #f8fafc; --code-bg: #f1f5f9; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 40px 24px 80px; line-height: 1.8; color: var(--text); background: var(--bg); }
+
+    /* Header */
+    .header { text-align: center; margin-bottom: 40px; }
+    .logo { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .logo-icon { width: 36px; height: 36px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 14px; }
+    .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--text); }
+    .header h1 { font-size: 1.1rem; font-weight: 400; color: var(--text-sub); }
+    .date { color: #94a3b8; font-size: 0.85rem; }
+    .lang-switch { margin-top: 12px; }
+    .lang-switch a { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.85rem; text-decoration: none; color: var(--text-sub); border: 1px solid var(--border); transition: all 0.15s; }
+    .lang-switch a.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .lang-switch a:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+    /* Content */
+    h2 { font-size: 1.1rem; margin-top: 2.5rem; margin-bottom: 0.6rem; color: var(--text); padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+    p { margin-bottom: 0.8rem; color: var(--text-sub); }
+    ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.5rem; color: var(--text-sub); }
+    li strong { color: var(--text); }
+    a { color: var(--accent); }
+    code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #334155; }
+
+    /* Data flow diagram */
+    .flow { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px 0; padding: 20px; background: var(--bg-alt); border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap; }
+    .flow-box { padding: 10px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-align: center; min-width: 100px; }
+    .flow-you { background: #dbeafe; color: #1e40af; }
+    .flow-ext { background: #e0e7ff; color: #3730a3; }
+    .flow-google { background: #dcfce7; color: #166534; }
+    .flow-arrow { color: #94a3b8; font-size: 1.2rem; }
+    .flow-no { background: #fee2e2; color: #991b1b; }
+
+    /* Scope table */
+    .scope-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+    .scope-table th { text-align: left; padding: 10px 12px; background: var(--bg-alt); border-bottom: 2px solid var(--border); color: var(--text); font-weight: 600; }
+    .scope-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-sub); }
+    .scope-table td:first-child { font-family: 'SF Mono', Consolas, monospace; font-size: 0.82rem; color: var(--accent); white-space: nowrap; }
+
+    /* i18n */
+    [lang="ko"] .en, [lang="en"] .ko { display: none; }
   </style>
 </head>
 <body>
-  <h1>QAlog — Privacy Policy</h1>
-  <p class="date">Last updated: April 6, 2026</p>
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">QA</div>
+      <span class="logo-text">QAlog</span>
+    </div>
+    <h1 class="en">Privacy Policy</h1>
+    <h1 class="ko">개인정보처리방침</h1>
+    <p class="date en">Last updated: April 7, 2026</p>
+    <p class="date ko">최종 수정: 2026년 4월 7일</p>
+    <div class="lang-switch">
+      <a href="#" id="btn-en" class="active" onclick="setLang('en')">English</a>
+      <a href="#" id="btn-ko" onclick="setLang('ko')">한국어</a>
+    </div>
+  </div>
 
-  <h2>1. What We Collect</h2>
-  <p>QAlog collects the following data <strong>only when you actively submit a QA issue</strong>:</p>
+  <!-- Data Flow Diagram -->
+  <div class="flow">
+    <div class="flow-box flow-you en">You (Browser)</div>
+    <div class="flow-box flow-you ko">사용자 (브라우저)</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box flow-ext">QAlog Extension</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box flow-google">Google Drive / Sheets</div>
+    <span class="flow-arrow" style="margin-left: 16px;">✕</span>
+    <div class="flow-box flow-no en">No external servers</div>
+    <div class="flow-box flow-no ko">외부 서버 없음</div>
+  </div>
+
+  <!-- 1. What We Collect -->
+  <h2><span class="en">1. What We Collect</span><span class="ko">1. 수집 항목</span></h2>
+  <p class="en">QAlog collects the following data <strong>only when you actively submit a QA issue</strong>:</p>
+  <p class="ko">QAlog는 <strong>QA 이슈를 제출할 때만</strong> 다음 데이터를 수집합니다:</p>
   <ul>
-    <li><strong>Email address</strong> — used to identify the submitter (via Google OAuth)</li>
-    <li><strong>Screenshot</strong> — the area you select on the page</li>
-    <li><strong>Page URL &amp; title</strong> — the page where the issue was captured</li>
-    <li><strong>DOM element info</strong> — tag name, CSS selector, XPath of a selected element (optional)</li>
-    <li><strong>Browser environment</strong> — browser version, OS, viewport size, timezone, language</li>
-    <li><strong>User-entered text</strong> — comment, repro steps, category, severity</li>
+    <li><strong class="en">Email address</strong><strong class="ko">이메일 주소</strong> — <span class="en">identifies the submitter (via Google OAuth)</span><span class="ko">제출자 식별 (Google OAuth)</span></li>
+    <li><strong class="en">Screenshot</strong><strong class="ko">스크린샷</strong> — <span class="en">the area you select on the page</span><span class="ko">사용자가 선택한 영역</span></li>
+    <li><strong class="en">Page URL</strong><strong class="ko">페이지 URL</strong> — <span class="en">the page where the issue was captured</span><span class="ko">이슈가 캡처된 페이지</span></li>
+    <li><strong class="en">DOM element info</strong><strong class="ko">DOM 요소 정보</strong> — <span class="en">tag, CSS selector, XPath (optional)</span><span class="ko">태그, CSS 선택자, XPath (선택)</span></li>
+    <li><strong class="en">Browser environment</strong><strong class="ko">브라우저 환경</strong> — <span class="en">browser, OS, viewport, timezone</span><span class="ko">브라우저, OS, 뷰포트, 시간대</span></li>
+    <li><strong class="en">User input</strong><strong class="ko">사용자 입력</strong> — <span class="en">comment, repro steps, category, severity</span><span class="ko">코멘트, 재현단계, 분류, 심각도</span></li>
   </ul>
 
-  <h2>2. Where Data Is Stored</h2>
-  <p>All data is stored exclusively in <strong>your own Google Drive and Google Sheets</strong>, under your Google account. QAlog does not operate any servers and does not store any data outside of your Google account.</p>
-  <ul>
-    <li>Screenshots → uploaded to a Google Drive folder owned by you</li>
-    <li>Issue records → appended to a Google Sheets spreadsheet owned by you</li>
-  </ul>
+  <!-- 2. Where Data Is Stored -->
+  <h2><span class="en">2. Where Data Is Stored</span><span class="ko">2. 데이터 저장 위치</span></h2>
+  <p class="en">All data is stored exclusively in <strong>your own Google Drive and Google Sheets</strong>. QAlog does not operate any servers.</p>
+  <p class="ko">모든 데이터는 <strong>사용자 본인의 Google Drive와 Google Sheets</strong>에만 저장됩니다. QAlog는 별도 서버를 운영하지 않습니다.</p>
 
-  <h2>3. Third-Party Sharing</h2>
-  <p><strong>None.</strong> QAlog does not transmit data to any third-party servers, analytics services, or advertising networks. All communication occurs directly between your browser and Google APIs.</p>
+  <table class="scope-table">
+    <tr>
+      <th class="en">Data</th><th class="en">Storage</th>
+      <th class="ko">데이터</th><th class="ko">저장 위치</th>
+    </tr>
+    <tr>
+      <td class="en">Screenshots</td><td class="en">Your Google Drive folder</td>
+      <td class="ko">스크린샷</td><td class="ko">본인 Google Drive 폴더</td>
+    </tr>
+    <tr>
+      <td class="en">Issue records</td><td class="en">Your Google Sheets spreadsheet</td>
+      <td class="ko">이슈 기록</td><td class="ko">본인 Google Sheets 스프레드시트</td>
+    </tr>
+    <tr>
+      <td class="en">Settings backup</td><td class="en">Google Drive hidden app folder</td>
+      <td class="ko">설정 백업</td><td class="ko">Google Drive 숨김 앱 폴더</td>
+    </tr>
+    <tr>
+      <td class="en">Preferences</td><td class="en">Chrome local storage (not transmitted)</td>
+      <td class="ko">환경설정</td><td class="ko">Chrome 로컬 저장소 (외부 전송 없음)</td>
+    </tr>
+  </table>
 
-  <h2>4. Google API Scopes</h2>
-  <p>QAlog requests the following OAuth scopes:</p>
-  <ul>
-    <li><code>userinfo.email</code> — to identify the logged-in user</li>
-    <li><code>drive.file</code> — to create and upload screenshots to a Drive folder created by the extension</li>
-    <li><code>drive.metadata.readonly</code> — to detect the spreadsheet's parent folder for organizing screenshots</li>
-    <li><code>drive.appdata</code> — to back up extension settings to a hidden app-specific folder (not visible to users)</li>
-    <li><code>spreadsheets</code> — to append issue records to your spreadsheet</li>
-  </ul>
-  <p>QAlog's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+  <!-- 3. Third-Party Sharing -->
+  <h2><span class="en">3. Third-Party Sharing</span><span class="ko">3. 제3자 제공</span></h2>
+  <p class="en"><strong>None.</strong> QAlog does not transmit data to any third-party servers, analytics, or ad networks. All communication occurs directly between your browser and Google APIs.</p>
+  <p class="ko"><strong>없음.</strong> QAlog는 제3자 서버, 분석 도구, 광고 네트워크에 데이터를 전송하지 않습니다. 모든 통신은 브라우저와 Google API 간에 직접 이루어집니다.</p>
 
-  <h2>5. Data Retention</h2>
-  <p>QAlog does not retain any data. Captured data exists only in your Google Drive and Sheets. You can delete it at any time through Google Drive.</p>
+  <!-- 4. Google API Scopes -->
+  <h2><span class="en">4. Google API Scopes</span><span class="ko">4. Google API 권한</span></h2>
 
-  <h2>6. Local Storage</h2>
-  <p>QAlog uses <code>chrome.storage.sync</code> to store configuration (spreadsheet ID, folder ID, user preferences). This data stays within your Chrome profile and is not transmitted externally.</p>
+  <table class="scope-table">
+    <tr>
+      <th>Scope</th>
+      <th class="en">Purpose</th>
+      <th class="ko">용도</th>
+    </tr>
+    <tr>
+      <td>userinfo.email</td>
+      <td class="en">Identify logged-in user</td>
+      <td class="ko">로그인 사용자 식별</td>
+    </tr>
+    <tr>
+      <td>drive.file</td>
+      <td class="en">Create & upload screenshots</td>
+      <td class="ko">스크린샷 생성 및 업로드</td>
+    </tr>
+    <tr>
+      <td>drive.metadata.readonly</td>
+      <td class="en">Detect spreadsheet location</td>
+      <td class="ko">스프레드시트 위치 감지</td>
+    </tr>
+    <tr>
+      <td>drive.appdata</td>
+      <td class="en">Back up settings (hidden folder)</td>
+      <td class="ko">설정 백업 (숨김 폴더)</td>
+    </tr>
+    <tr>
+      <td>spreadsheets</td>
+      <td class="en">Append issue records</td>
+      <td class="ko">이슈 기록 추가</td>
+    </tr>
+  </table>
 
-  <h2>7. Children's Privacy</h2>
-  <p>QAlog is not intended for children under 13 and does not knowingly collect personal information from children.</p>
+  <p class="en">QAlog's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+  <p class="ko">QAlog의 Google API 정보 사용은 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API 서비스 사용자 데이터 정책</a>(제한적 사용 요구사항 포함)을 준수합니다.</p>
 
-  <h2>8. Changes</h2>
-  <p>We may update this policy. Changes will be reflected on this page with an updated date.</p>
+  <!-- 5. Data Retention -->
+  <h2><span class="en">5. Data Retention</span><span class="ko">5. 데이터 보관</span></h2>
+  <p class="en">QAlog does not retain any data. All captured data exists only in your Google Drive and Sheets. You can delete it at any time.</p>
+  <p class="ko">QAlog는 데이터를 보관하지 않습니다. 캡처된 모든 데이터는 Google Drive와 Sheets에만 존재하며, 언제든 삭제할 수 있습니다.</p>
 
-  <h2>9. Contact</h2>
-  <p>If you have questions about this privacy policy, please open an issue on our <a href="https://github.com/user/qa-capture-public" target="_blank" rel="noopener">GitHub repository</a>.</p>
+  <!-- 6. Children -->
+  <h2><span class="en">6. Children's Privacy</span><span class="ko">6. 아동 개인정보</span></h2>
+  <p class="en">QAlog is not intended for children under 13 and does not knowingly collect personal information from children.</p>
+  <p class="ko">QAlog는 만 13세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 수집하지 않습니다.</p>
+
+  <!-- 7. Changes -->
+  <h2><span class="en">7. Changes</span><span class="ko">7. 변경사항</span></h2>
+  <p class="en">We may update this policy. Changes will be reflected on this page with an updated date.</p>
+  <p class="ko">이 방침은 변경될 수 있으며, 변경 시 이 페이지에 갱신일과 함께 반영됩니다.</p>
+
+  <!-- 8. Contact -->
+  <h2><span class="en">8. Contact</span><span class="ko">8. 문의</span></h2>
+  <p class="en">For questions about this policy, email <a href="mailto:dmtowj@gmail.com">dmtowj@gmail.com</a>.</p>
+  <p class="ko">이 방침에 대한 문의: <a href="mailto:dmtowj@gmail.com">dmtowj@gmail.com</a></p>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+      document.getElementById('btn-ko').className = lang === 'ko' ? 'active' : '';
+    }
+    // 브라우저 언어 감지
+    if (navigator.language.startsWith('ko')) setLang('ko');
+  </script>
 </body>
 </html>
