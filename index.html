@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QAlog — Privacy Policy</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.7; color: #1e293b; }
+    h1 { font-size: 1.6rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; color: #334155; }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.4rem; }
+    .date { color: #64748b; font-size: 0.9rem; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <h1>QAlog — Privacy Policy</h1>
+  <p class="date">Last updated: April 6, 2026</p>
+
+  <h2>1. What We Collect</h2>
+  <p>QAlog collects the following data <strong>only when you actively submit a QA issue</strong>:</p>
+  <ul>
+    <li><strong>Email address</strong> — used to identify the submitter (via Google OAuth)</li>
+    <li><strong>Screenshot</strong> — the area you select on the page</li>
+    <li><strong>Page URL &amp; title</strong> — the page where the issue was captured</li>
+    <li><strong>DOM element info</strong> — tag name, CSS selector, XPath of a selected element (optional)</li>
+    <li><strong>Browser environment</strong> — browser version, OS, viewport size, timezone, language</li>
+    <li><strong>User-entered text</strong> — comment, repro steps, category, severity</li>
+  </ul>
+
+  <h2>2. Where Data Is Stored</h2>
+  <p>All data is stored exclusively in <strong>your own Google Drive and Google Sheets</strong>, under your Google account. QAlog does not operate any servers and does not store any data outside of your Google account.</p>
+  <ul>
+    <li>Screenshots → uploaded to a Google Drive folder owned by you</li>
+    <li>Issue records → appended to a Google Sheets spreadsheet owned by you</li>
+  </ul>
+
+  <h2>3. Third-Party Sharing</h2>
+  <p><strong>None.</strong> QAlog does not transmit data to any third-party servers, analytics services, or advertising networks. All communication occurs directly between your browser and Google APIs.</p>
+
+  <h2>4. Google API Scopes</h2>
+  <p>QAlog requests the following OAuth scopes:</p>
+  <ul>
+    <li><code>userinfo.email</code> — to identify the logged-in user</li>
+    <li><code>drive.file</code> — to create and upload screenshots to a Drive folder created by the extension</li>
+    <li><code>drive.metadata.readonly</code> — to detect the spreadsheet's parent folder for organizing screenshots</li>
+    <li><code>drive.appdata</code> — to back up extension settings to a hidden app-specific folder (not visible to users)</li>
+    <li><code>spreadsheets</code> — to append issue records to your spreadsheet</li>
+  </ul>
+  <p>QAlog's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+  <h2>5. Data Retention</h2>
+  <p>QAlog does not retain any data. Captured data exists only in your Google Drive and Sheets. You can delete it at any time through Google Drive.</p>
+
+  <h2>6. Local Storage</h2>
+  <p>QAlog uses <code>chrome.storage.sync</code> to store configuration (spreadsheet ID, folder ID, user preferences). This data stays within your Chrome profile and is not transmitted externally.</p>
+
+  <h2>7. Children's Privacy</h2>
+  <p>QAlog is not intended for children under 13 and does not knowingly collect personal information from children.</p>
+
+  <h2>8. Changes</h2>
+  <p>We may update this policy. Changes will be reflected on this page with an updated date.</p>
+
+  <h2>9. Contact</h2>
+  <p>If you have questions about this privacy policy, please open an issue on our <a href="https://github.com/user/qa-capture-public" target="_blank" rel="noopener">GitHub repository</a>.</p>
+</body>
+</html>
